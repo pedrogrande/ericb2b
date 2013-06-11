@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+Supplier: <%= @product.supplier.to_s %>
+Product ID: <%= @product.id %>
+<p>
+  <b>Name:</b>
+  <%= @product.name %>
+</p>
+
+<p>
+  <b>Cost:</b>
+  <%= @product.cost %>
+</p>
+
+  <% @product.sizes.each do |size| %>
+    <p><%= size.size %><%= text_field_tag :quantity %></p>
+    <p>Product_size_id: <%= text_field_tag :product_size_id, size.product_sizes.first.id %></p>
+    
+  <% end %>
+
+<%= link_to "Add to Order", add_line_item_path %>
+
+<%= link_to 'Edit', edit_supplier_product_path([@product.supplier, @product]) %> |
+<%= link_to 'Back', supplier_products_path(@product.supplier) %>
